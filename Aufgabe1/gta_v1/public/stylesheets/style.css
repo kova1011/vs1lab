@@ -1,3 +1,5 @@
+
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -5,4 +7,25 @@ body {
 
 a {
   color: #00B7FF;
+ 
+}
+
+header{
+  background-color: grey;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+
+h1{
+  color: white;
+}
+input{
+  padding-top: 0.5px;
+}
+label{
+
+}
+footer{
+  background-color: grey;
 }
