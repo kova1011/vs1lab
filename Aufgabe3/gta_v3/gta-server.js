@@ -31,12 +31,22 @@ app.set('view engine', 'ejs');
 
 // TODO: CODE ERGÄNZEN
 
+app.use(express.static(__dirname + '/public/'));
 /**
  * Konstruktor für GeoTag Objekte.
  * GeoTag Objekte sollen min. alle Felder des 'tag-form' Formulars aufnehmen.
  */
 
 // TODO: CODE ERGÄNZEN
+class GeoTag{
+    constructor(laditude, longitude,name,hashtag){
+        laditude= this.laditude;
+        longitude= this.longitude;
+        name = this.name;
+        hashtag =this.hashtag;
+    }
+}
+
 
 /**
  * Modul für 'In-Memory'-Speicherung von GeoTags mit folgenden Komponenten:
@@ -49,6 +59,26 @@ app.set('view engine', 'ejs');
 
 // TODO: CODE ERGÄNZEN
 
+var InMemory = (function(){
+var GeoTagsList = [];
+return {
+findByCoordinate : function(long,lat){
+    var found = [];
+    GeoTagsList.forEach(function(element){
+      var diflong = element.longitude -longitude;
+      var diflat = element.laditude - laditude;
+      var radius = Math.sqrt(diflong*diflong + diflat*diflat);
+      if( radius<= 1)
+        found.push(element);
+    });
+    return found;
+    },
+    getList : function(){
+        
+    });
+
+}
+)
 /**
  * Route mit Pfad '/' für HTTP 'GET' Requests.
  * (http://expressjs.com/de/4x/api.html#app.get.method)
