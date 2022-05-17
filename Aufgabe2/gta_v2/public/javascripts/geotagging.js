@@ -121,6 +121,23 @@ var gtaLocator = (function GtaLocator(geoLocationApi) {
 
         updateLocation: function() {
             // TODO Hier Inhalt der Funktion "update" ergänzen
+
+            tryLocate(function(position){
+                var lat = document.getElementById("latitude");
+                var long = document.getElementById("longitude");
+                var lat_hi = document.getElementById("hi_lat");
+                var long_hi = document.getElementById("hi_long");
+                var latitude = getLatitude(position);
+                var longitude = getLongitude(position);
+                lat.value = lat_hi.value = latitude;
+                long.value = long_hi.value = longitude;
+                var map = getLocationMapSrc(latitude,longitude,undefined, 13);
+                document.getElementById("result-img").setAttribute("scr",map)
+            },
+            function(onerror){
+                alert(onerror);
+            });
+        
         }
 
     }; // ... Ende öffentlicher Teil
@@ -134,4 +151,5 @@ var gtaLocator = (function GtaLocator(geoLocationApi) {
 $(function() {
     alert("Please change the script 'geotagging.js'");
     // TODO Hier den Aufruf für updateLocation einfügen
+    gtaLocator.updateLocation();
 });
